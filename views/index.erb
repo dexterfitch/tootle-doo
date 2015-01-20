@@ -1,0 +1,22 @@
+<h1>To Do</h1>
+
+<p>Create a new list:</p>
+
+<form action="/lists" method="post">
+  <label for="name">Assign a name to your list:</label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit">Add list</button>
+</form>
+
+<% if @lists.any?() %>
+<p>Click on a list to see its tasks:</p>
+
+<ul>
+  <% @lists.each do |list| %>
+  <li><a href="/lists/<%= list.id() %>"><%= list.name() %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are no lists yet!</p>
+<% end %>
